@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script src="js/jquery-1.9.1.js"></script>
+</head>
+<body>	
+	hello,i love you
+	
+	<form action="/post/1" method="post">
+		<input type="submit" value="提交"/>
+	</form>
+		<form action="/post2/1" method="post">
+		<input type="submit" value="提交"/>
+	</form>
+	<button onclick="show()">consumes</button>
+	<button onclick="show2()">produces</button>
+	<button onclick="show3()">params和header测试</button>
+	
+	<script type="text/javascript">
+		function show(){
+			$.ajax({
+				type: "POST",
+				url:"consumes/test.json",
+				contentType:"application/json",
+				success:function(data){
+					alert(data);
+				}
+			});
+		}
+		
+		function show2(){
+			$.ajax({
+				type: "POST",
+				url:"produces/test.json",
+				Accepts:"*/*",
+				success:function(data){
+					alert(data);
+				}
+			});
+		}
+		
+		function show3(){
+			$.ajax({
+				type: "POST",
+				url:"param/test.json",
+				data:"action=save",
+				headers:{
+					"uname":"a"
+				},
+				success:function(data){
+					alert(data);
+				}
+			});
+		}
+	</script>
+	
+</body>
+</html>
